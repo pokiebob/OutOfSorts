@@ -2,6 +2,22 @@ import java.util.Random;
 
 public class CyeresesSortsTester {
 
+	private int[][] testCases;
+
+	CyeresesSortsTester() {
+		testCases = generateTestCases();
+	}
+
+	public static int[][] TestCasesCopyMachine(int[][] data) {
+		int[][] newCases = new int[data.length][data[0].length];
+		for (int row = 0; row < data.length; row++) {
+			for (int col = 0; col < data[row].length; col++) {
+				newCases[row][col] = data[row][col];
+			}
+		}
+		return newCases;
+	}
+
 	public static boolean isSorted(int[] data) {
 		for (int i = 1; i < data.length; i++) {
 			if (data[i-1] > data[i]) {
@@ -23,17 +39,17 @@ public class CyeresesSortsTester {
 	}
 
 	public static int[][] generateTestCases() {
-		int[][] testCases = new int[100][100];
+		int[][] a = new int[100][100];
 		for (int i = 0; i < 100; i++) {
-			testCases[i] = generateRandomArray();
+			a[i] = generateRandomArray();
 		}
-		return testCases;
+		return a;
 	}
 
-	public static boolean bubbleSortTester(int[][] testCases) {
-		int[][] data = testCases;
+	public boolean bubbleSortTester() {
+		int[][] data = TestCasesCopyMachine(testCases);
 		boolean success = true;
-		System.out.println("boolean bubbleSortIsGud;\n...\n...\n");
+		System.out.println("\nboolean isBubbleSortGud;\n...");
 		for (int i = 0; i < data.length; i++) {
 			Sorts.bubbleSort(data[i]);
 			if (! isSorted(data[i])) {
@@ -46,16 +62,41 @@ public class CyeresesSortsTester {
 			}
 		}
 		if (success) {
-			System.out.println("bubbleSortIsGud = true;\n\n");
+			System.out.println("isBubbleSortGud = true;\n");
 		} else {
-			System.out.println("bubbleSortIsGud = false;\n\n");
+			System.out.println("isBubbleSortGud = false;\n");
 		}
 		return success;
 	}
 
-	public static boolean daUltimateTester() {
-		int[][] testCases = generateTestCases();
-		if (! bubbleSortTester(testCases)) {
+	public boolean selectionSortTester() {
+		int[][] data = TestCasesCopyMachine(testCases);
+		boolean success = true;
+		System.out.println("\nboolean isSelectionSortGud;\n...");
+		for (int i = 0; i < data.length; i++) {
+			Sorts.selectionSort(data[i]);
+			if (! isSorted(data[i])) {
+				success = false;
+				System.out.println("Test Case " + i + " Unsuccessful:");
+				for (int j : data[i]) {
+					System.out.println(j);
+				}
+				System.out.println("\n");
+			}
+		}
+		if (success) {
+			System.out.println("isSelectionSortGud = true;\n");
+		} else {
+			System.out.println("isSelectionSortGud = false;\n");
+		}
+		return success;
+	}
+
+	public boolean daUltimateTester() {
+		if (! bubbleSortTester()) {
+			return false;
+		}
+		if (! selectionSortTester()) {
 			return false;
 		}
 		return true;
@@ -63,10 +104,17 @@ public class CyeresesSortsTester {
 
 	public static void main(String[] args) {
 
-		if (daUltimateTester()) {
-			System.out.println("boolean areYouEpicSorterBoi = true;");
+		CyeresesSortsTester isYouEpicSorterBoiTester = new CyeresesSortsTester();
+
+		System.out.println("\n// I will determine if you is an Epic Sorter Boi...\n");
+
+		boolean isYouEpicSorterBoi = isYouEpicSorterBoiTester.daUltimateTester();
+
+		System.out.println("\n// My ultimate consensus...\n");
+		if (isYouEpicSorterBoi) {
+			System.out.println("boolean isYouEpicSorterBoi = true;");
 		} else {
-			System.out.println("boolean areYouEpicSorterBoi = false;");
+			System.out.println("boolean isYouEpicSorterBoi = false;");
 		}
 		
 	}
