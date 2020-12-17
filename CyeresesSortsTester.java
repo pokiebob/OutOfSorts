@@ -101,11 +101,37 @@ public class CyeresesSortsTester {
 		return success;
 	}
 
+	public boolean insertionSortTester() {
+		int[][] data = TestCasesCopyMachine(testCases);
+		boolean success = true;
+		System.out.println("\nboolean isInsertionSortGud;\n...");
+		for (int i = 0; i < data.length; i++) {
+			Sorts.insertionSort(data[i]);
+			if (! Arrays.equals(data[i], sortedTestCases[i])) {
+				success = false;
+				System.out.println("Test Case " + i + " Unsuccessful:");
+				for (int j : data[i]) {
+					System.out.println(j);
+				}
+				System.out.println("\n");
+			}
+		}
+		if (success) {
+			System.out.println("isInsertionSortGud = true;\n");
+		} else {
+			System.out.println("isInsertionSortGud = false;\n");
+		}
+		return success;
+	}
+
 	public boolean daUltimateTester() {
 		if (! bubbleSortTester()) {
 			return false;
 		}
 		if (! selectionSortTester()) {
+			return false;
+		}
+		if (! insertionSortTester()) {
 			return false;
 		}
 		return true;
