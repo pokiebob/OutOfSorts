@@ -50,27 +50,5 @@ public class Sorts{
 	}
 
 	public static void main(String[] args) {
-		int[] data = { 234, -352, 0, 4, -3, 2, 34, -32, -31, 0, 78};
-		
-		int[] bubbleSorted = data;
-		bubbleSort(bubbleSorted);
-		System.out.println("bubbleSort: ");
-		for (int i : bubbleSorted) {
-			System.out.println(i);
-		}
-
-		int[] selectionSorted = data;
-		selectionSort(selectionSorted);
-		System.out.println("selectionSort: ");
-		for (int i : selectionSorted) {
-			System.out.println(i);
-		}
-
-		int[] insertionSorted = data;
-		insertionSort(insertionSorted);
-		System.out.println("insertionSort: ");
-		for (int i : insertionSorted) {
-			System.out.println(i);
-		}
 	}
 }
