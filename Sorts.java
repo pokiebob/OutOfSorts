@@ -41,7 +41,7 @@ public class Sorts{
 		for (int i = 1; i < data.length; i++) {
 			current = data[i];
 			index = i - 1;
-			while (data[index] > current) {
+			while (index >= 0 && data[index] > current) {
 				data[index + 1] = data[index];
 				index--;
 			}
