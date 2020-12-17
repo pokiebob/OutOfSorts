@@ -36,6 +36,18 @@ public class Sorts{
 		}
 	}
 
+	public static void insertionSort(int[] data) {
+		int index, current;
+		for (int i = 1; i < data.length; i++) {
+			current = data[i];
+			index = i - 1;
+			while (data[index] > current) {
+				data[index + 1] = data[index];
+				index--;
+			}
+			data[index + 1] = current;
+		}
+	}
 
 	public static void main(String[] args) {
 		int[] data = { 234, -352, 0, 4, -3, 2, 34, -32, -31, 0, 78};
@@ -51,6 +63,13 @@ public class Sorts{
 		selectionSort(selectionSorted);
 		System.out.println("selectionSort: ");
 		for (int i : selectionSorted) {
+			System.out.println(i);
+		}
+
+		int[] insertionSorted = data;
+		insertionSort(insertionSorted);
+		System.out.println("insertionSort: ");
+		for (int i : insertionSorted) {
 			System.out.println(i);
 		}
 	}
