@@ -19,6 +19,39 @@ public class Sorts{
 		}
 	}
 
+	public static void selectionSort(int[] data) {
+		int currentMinimum, prev;
+		for (int i = 0; i < data.length; i++) {
+			currentMinimum = i;
+			for (int j = i; j < data.length; j++) {
+				if (data[j] < data[currentMinimum]) {
+					currentMinimum = j;
+				}
+			}
+			if (currentMinimum != i) {
+				prev = data[i];
+				data[i] = data[currentMinimum];
+				data[currentMinimum] = prev;
+			}
+		}
+	}
+
+
 	public static void main(String[] args) {
+		int[] data = { 234, -352, 0, 4, -3, 2, 34, -32, -31, 0, 78};
+		
+		int[] bubbleSorted = data;
+		bubbleSort(bubbleSorted);
+		System.out.println("bubbleSort: ");
+		for (int i : bubbleSorted) {
+			System.out.println(i);
+		}
+
+		int[] selectionSorted = data;
+		selectionSort(selectionSorted);
+		System.out.println("selectionSort: ");
+		for (int i : selectionSorted) {
+			System.out.println(i);
+		}
 	}
 }
