@@ -1,11 +1,19 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class CyeresesSortsTester {
 
-	private int[][] testCases;
+	private int[][] testCases, sortedTestCases;
 
 	CyeresesSortsTester() {
 		testCases = generateTestCases();
+
+		//I am using the ArrayList sort function here just for testing
+		//and also so you don't steal my code
+		sortedTestCases = TestCasesCopyMachine(testCases);
+		for (int[] arr : sortedTestCases) {
+			Arrays.sort(arr);
+		}
 	}
 
 	public static int[][] TestCasesCopyMachine(int[][] data) {
@@ -18,6 +26,7 @@ public class CyeresesSortsTester {
 		return newCases;
 	}
 
+	//This is a lonely unused function boi :(
 	public static boolean isSorted(int[] data) {
 		for (int i = 1; i < data.length; i++) {
 			if (data[i-1] > data[i]) {
@@ -52,7 +61,7 @@ public class CyeresesSortsTester {
 		System.out.println("\nboolean isBubbleSortGud;\n...");
 		for (int i = 0; i < data.length; i++) {
 			Sorts.bubbleSort(data[i]);
-			if (! isSorted(data[i])) {
+			if (! Arrays.equals(data[i], sortedTestCases[i])) {
 				success = false;
 				System.out.println("Test Case " + i + " Unsuccessful:");
 				for (int j : data[i]) {
@@ -75,7 +84,7 @@ public class CyeresesSortsTester {
 		System.out.println("\nboolean isSelectionSortGud;\n...");
 		for (int i = 0; i < data.length; i++) {
 			Sorts.selectionSort(data[i]);
-			if (! isSorted(data[i])) {
+			if (! Arrays.equals(data[i], sortedTestCases[i])) {
 				success = false;
 				System.out.println("Test Case " + i + " Unsuccessful:");
 				for (int j : data[i]) {
